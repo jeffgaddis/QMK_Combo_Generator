@@ -19,3 +19,8 @@ This notebook is used to automatically determine the best key combos to use for 
 - I did some cleaning to the datasets so they no longer match exactly to the source, there are definately additional typos that should be fixed
 - This should ideally be used with a RP2040 or another board lots of storage space so that you can store more combos than you can remember.
 - I think you can probably use this to learn to type over 300 WPM like the stenographers do without the difficult learning curve. This is the first algorithmically generated combo system that I have seen, others seem to just pick combos manually which is tedious and makes it hard to deal with conflicts as the list grows.
+
+
+### Revision Notes:
+
+The last change seems to work well now for choosing the best keys to include. I noticed that some of the output strings are redundant as you get far down into the list so I still need to fix that but the first 100 seem good.
