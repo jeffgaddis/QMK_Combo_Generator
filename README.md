@@ -9,18 +9,20 @@ The 'thumb' layouts assume that each thumb can press either space or backspace a
 
 Referance the QMK documentation if you are not familiar with combos or see the gboards guide: http://combos.gboards.ca/docs/chords/
 
+There are also examples on my github profile.
+
 ## How it works:
 This notebook is used to automatically determine the best key combos to use for a QMK keyboard. 
 
-- The current combos are for Colemak-DH but you can change the keys and generate it for any other layout
+- The current combos are for Colemak-DH and QWERTY but you can change the keys and generate it for any other layout
 - This system assumes that you have Backspace and Space on separate thumb keys but you can remove backspace if necessary by changing the special key to None or change it to a different key.
 - Other combo dictionaries allow 2 key combos and I have found that this can interfere with typing. This system will mostly use 3 key inputs to avoid these issues.
 - The outputs are chosen in order of the frequency of their usage, you can force certain words to be ranked higher or force certain combos if you have preferances also.
-- I did some cleaning to the datasets so they no longer match exactly to the source, there are definately additional typos that should be fixed
+- I did some cleaning to the datasets so they no longer match exactly to the source, there are probably additional typos that should be fixed and weird copywrite text from the books that were referanced
 - This should ideally be used with a RP2040 or another board lots of storage space so that you can store more combos than you can remember.
 - I think you can probably use this to learn to type over 300 WPM like the stenographers do without the difficult learning curve. This is the first algorithmically generated combo system that I have seen, others seem to just pick combos manually which is tedious and makes it hard to deal with conflicts as the list grows.
 
 
 ### Revision Notes:
 
-The last change seems to work well now for choosing the best keys to include. I noticed that some of the output strings are redundant as you get far down into the list so I still need to fix that but the first 100 seem good.
+Increased the rank of 2 letter words so that they can get a combo before all the letters are taken and modified the process to remove redundant shingles and reduce the generation time. Also reduced the rank of shingles because full words are more useful.
