@@ -1,18 +1,25 @@
 # QMK_Combo_Generator
 This python notebook calculates the optimal send string combos for your QMK keyboard.
 
-I have attached the combos.def files generated for common english layouts so that you can just add them to your QMK files. The 'standard' files assume that the space key only thumb key and '2 thumbs' files assume that you have space on one thumb key and backspace on the other.
+I have attached the combos.def files generated for english words using common layouts so that you can just add them to your QMK files. The 'standard' files assume that the space key is the only thumb key and '2 thumbs' files assume that you have space on one thumb key and backspace on the other.
 
-## How to use:
-Copy as many lines as you want from the applicable combos_XXX.def file to the appropriate file in your keymap. Be careful not to exceed the space available on your micro controller, if you are not using something like a RP2040 then you will probably need to limit to 100 combos or less.
+## How to use with QMK:
+Copy as many lines as you want from the applicable combos_XXX.def file to the appropriate file in your keymap. Be careful not to exceed the space available on your micro controller, if you are using something newer like a RP2040 then you can probably use about 7,500 combos, older boards will probably need to limit to around 100 combos.
 
-The '2 thumb' layouts assume that one thumb can press space while the other presses backspace so that all 10 fingers are available. You can find/replace backspace if you want to use a different 2nd thumb key.
+The '2 thumbs' layouts assume that one thumb can press space while the other presses backspace so that all 10 fingers are available. You can find/replace backspace if you want to use a different 2nd thumb key.
 
 Reference the QMK documentation if you are not familiar with combos or see the gboards guide: http://combos.gboards.ca/docs/chords/
 
 There are also examples on my github profile.
 
-## How it works:
+## How to know what keys generate a word
+
+Each word will be assigned to the key combo that uses as many reachable letters as possible from left to right. This is the most natural and memorable way to assign them since you would already be reaching for the keys in this order for regular typing.
+
+You will need to skip letters that are in a column where the finger is already being used. For example, the word 'because' on a QWERTY keyboard will use the keys: B, E, A, U, S. The C key is skipped because it will conflict with the E key which also requires the left middle finger. These conflict rules are assigned based on an ortholinear grid layout it does not expect you to shift your hand to reach keys in unexpected columns. An example of this is the word 'through' where the assigned QWERTY keys are just: T, H, O. If you use a standard keyboard with staggared keys instead of ortholinear you may feel like you could also use your left middle finger to reach the R key but that key is assigned to the index finger only. If not for the staggering, that was added originally just to support typewriter mechanisms, it would feel like a significant hand movement to reach the R key like this. Once you are used to the assigned columns for each finger you will find that it is easy to know what keys to use.
+
+
+## How the notebook works:
 This notebook is used to automatically determine the best key combos to use for a QMK keyboard. 
 
 - The current combos are for Colemak-DH and QWERTY but you can change the keys and generate it for any other layout
